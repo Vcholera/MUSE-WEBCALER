@@ -116,7 +116,10 @@ def pc_main():
                     file.write(str(number) + '.' + str(soup.head.title.text) + '\n')
             else :
                     file.write(str(number) + '.' + str(soup.body.p.text) + '\n')
-            file.write('\t网址: %s%s\n' % (entry_website.get(), webIdStart))
+            if not rd_type.get():
+                file.write('\t网址: %s%d\n' % (entry_website.get(), st))
+            else:
+                file.write('\t网址: %s%s\n' % (entry_website.get(), webIdStart))
             number += 1
 
         st += 1
@@ -231,7 +234,7 @@ def prog_bar():
     while flag:
         try:
             progress_bar.set(f'正在获取网站 {url} 内容，请稍后{dot}')
-#           time.sleep(0.5)
+#           time.sleep(0.1)
         except:
             return
         count += 1
